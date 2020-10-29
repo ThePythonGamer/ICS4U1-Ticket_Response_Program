@@ -20,4 +20,8 @@ public class Customer {
     public int getVIPTicket() {
         return VIPTicket;
     }
+
+    public String toString(){
+        return "Email: " + this.email + "\nStandard Tickets: " + this.standardTicket + "\nVIP Tickets: " + VIPTicket;
+    }
 }
