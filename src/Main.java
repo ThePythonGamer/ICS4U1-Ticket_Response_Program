@@ -6,13 +6,23 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
-        File text = new File("someNameIdkYet.txt");
+        File text = new File("Ticket.txt");
+        int length,standard, vip;
+        String name;
+        Customer[] customers;//This error will disappear when this array is put into use
         try {
             //Starting the scanner to scan the file and get object attribute values
             Scanner sc = new Scanner(text);
-            while (sc.hasNextLine()) {
-                //Code for the file
-                System.out.println("This is just filler so intellij shuts up...");
+            length = sc.nextInt();
+            sc.nextLine();
+
+            customers = new Customer[length];
+
+            for(int i = 0;i<length;i++){
+                name = sc.nextLine();
+                standard = sc.nextInt();
+                vip = sc.nextInt();
+                customers[i] = new Customer(name,standard,vip);
             }
         }//Gives error message to user and ends the program if the file was not found on the computer
         catch (FileNotFoundException e) {
