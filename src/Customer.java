@@ -1,7 +1,12 @@
+/**
+ *
+ * @version 3
+ */
 public class Customer {
     private String email;
     private int standardTicket;
     private int VIPTicket;
+
 
     public Customer(String email, int standardTicket, int VIPTicket) {
         this.email = email;

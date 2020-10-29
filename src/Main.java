@@ -3,12 +3,17 @@ import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ *
+ * @version 7
+ */
 public class Main {
     public static void main(String[] args){
         File text = new File("Ticket.txt");
         int length = 0 ,standard, vip;
         String name;
         Customer[] customers = new Customer[0];
+        OrderQueue customerOrder = new OrderQueue();
 
         try {
             //Starting the scanner to scan the file and get object attribute values
@@ -38,13 +43,15 @@ public class Main {
             System.out.println("Please enter the correct amount of customer emails into the list. The program will now shutdown.");
             System.exit(0);
         }
-        randomizeArray(customers, length);
+
+        randomizeArray(customers, length, customerOrder);
+
         for (Customer customer:customers) {
             System.out.println(customer);
         }
     }
 
-    public static void randomizeArray(Customer[] customers, int length){
+    public static void randomizeArray(Customer[] customers, int length, OrderQueue customerOrder){
         Random rnd = ThreadLocalRandom.current();
         for (int i = length - 1; i > -1; i--)
         {
@@ -52,6 +59,8 @@ public class Main {
             Customer temp = customers[index];
             customers[index] = customers[i];
             customers[i] = temp;
+            System.out.println(customers[i]);
+            customerOrder.enqueue(customers[i]);
         }
     }
 }
