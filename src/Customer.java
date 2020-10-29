@@ -24,6 +24,6 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer with email " + email + " requested " +
-                standardTicket + "standard ticket and " + VIPTicket + " VIP ticket";
+                standardTicket + " standard ticket and " + VIPTicket + " VIP ticket";
     }
 }
