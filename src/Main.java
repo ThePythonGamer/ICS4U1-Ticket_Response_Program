@@ -49,6 +49,28 @@ public class Main {
         for (Customer customer:customers) {
             System.out.println(customer);
         }
+        int standardMax = 30;
+        int vipMax = 10;
+
+        for(int i = 0; i < length; i++){
+            if (standardMax != 0 && vipMax != 0) {
+                if (standardMax - customerOrder.peek().getStandardTicket() < 0){
+                    System.out.println("not enough");
+                }else if (standardMax > 0) {
+                    standardMax = standardMax - customerOrder.peek().getStandardTicket();
+                }
+                if (vipMax - customerOrder.peek().getVIPTicket() < 0){
+                    System.out.println("not enough");
+                }else if (vipMax > 0) {
+                    vipMax = vipMax - customerOrder.peek().getVIPTicket();
+                }
+
+                System.out.println(standardMax + " " + vipMax);
+                customerOrder.dequeue();
+
+
+            }
+        }
     }
 
     public static void randomizeArray(Customer[] customers, int length, OrderQueue customerOrder){
@@ -59,7 +81,6 @@ public class Main {
             Customer temp = customers[index];
             customers[index] = customers[i];
             customers[i] = temp;
-            System.out.println(customers[i]);
             customerOrder.enqueue(customers[i]);
         }
     }
