@@ -1,6 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
+import java.util.Random;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -53,14 +56,15 @@ public class Main {
 
     public static void randomizeArray(Customer[] customers, int length, OrderQueue customerOrder){
         Random rnd = ThreadLocalRandom.current();
-        for (int i = length - 1; i > -1; i--)
+        for (int i = 0; i <length; i++)
         {
-            int index = rnd.nextInt(i + 1);
+            int index = i + rnd.nextInt(length - i);
             Customer temp = customers[index];
             customers[index] = customers[i];
             customers[i] = temp;
             System.out.println(customers[i]);
             customerOrder.enqueue(customers[i]);
         }
+        //easy fix: just remove the previous print and add a for each loop here for printing the entire array
     }
 }
