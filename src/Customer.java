@@ -1,5 +1,6 @@
-/**
+/** The class that creates the Customer Object that holds multiple attributes of customer information
  *
+ * @author Hayden Rooney, Daniel Ly, Erin Zhang
  * @version 4
  */
 public class Customer {
@@ -11,10 +12,10 @@ public class Customer {
     /**This is a Customer object that represent a customer with email and his/her request on standard ticket, vip ticket.
      * A response is included for emailing this customer later.
      *
-     * @param email - this represent the customer's email
-     * @param standardTicket - this represent the customer's request for standard ticket
-     * @param VIPTicket - this represent the customer's request for vip ticket
-     * @param response - this is the response to give for the customer's request.
+     * @param email this represent the customer's email
+     * @param standardTicket this represent the customer's request for standard ticket
+     * @param VIPTicket this represent the customer's request for vip ticket
+     * @param response this is the response to give for the customer's request.
      */
     public Customer(String email, int standardTicket, int VIPTicket, String response) {
         this.email = email;
@@ -56,7 +57,7 @@ public class Customer {
 
     /**This set the response for the customer's request
      *
-     * @param response - information for email response to be changed
+     * @param response information for email response to be changed
      */
     public void setResponse(String response) {
         this.response = response;

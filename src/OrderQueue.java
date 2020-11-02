@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 
-/**
+/** The class that creates a queue to add the new customer order after doing a lottery
  *
+ * @author Hayden Rooney, Daniel Ly, Erin Zhang
  * @version 1
  */
 public class OrderQueue {
@@ -9,7 +10,7 @@ public class OrderQueue {
 
     /**
      * This add a Customer object to the queue
-     * @param toAdd - Customer object to be added
+     * @param toAdd Customer object to be added
      */
     public void enqueue(Customer toAdd) {
         Queue.add(toAdd);
