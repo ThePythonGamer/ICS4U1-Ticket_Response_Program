@@ -17,6 +17,3 @@ sampleemail5@tdsb.on.ca
 sampleemail6@tdsb.on.ca
 0
 2
-sampleemail7@tdsb.on.ca
-1
-1

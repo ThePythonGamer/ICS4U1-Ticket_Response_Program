@@ -10,7 +10,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  *
- * @version 7
+ * @version 9
  */
 public class Main {
     public static void main(String[] args) {
@@ -52,48 +52,57 @@ public class Main {
             System.exit(0);
         }
 
+        //This is the lottery which randomizes the order of customers
         randomizeArray(customers, length, customerOrder);
 
         for (Customer customer : customers) {
             System.out.println(customer);
         }
+
         int standardMax = 30;
         int vipMax = 10;
 
         for (int i = 0; i < length; i++) {
+            //Checks if there are any tickets available first
             if (standardMax != 0 && vipMax != 0) {
-                if (standardMax - customerOrder.peek().getStandardTicket() < 0) {
-                    customers[i].setResponse("Sorry, but there is not enough tickets to fulfill you're request.");
-                } else if (standardMax > 0) {
+                //Checks if both their standard and vip ticket order cannot be fulfilled
+                if (standardMax - customerOrder.peek().getStandardTicket() < 0 || vipMax - customerOrder.peek().getVIPTicket() < 0) {
+                    customers[i].setResponse("Thank you for your interest in our intimate virtual concert series! \nUnfortunately, your request for " + customers[i].getStandardTicket() + " standard ticket(s) and " + customers[i].getVIPTicket() + " VIP ticket(s) could not be fulfilled. \nBut don't fret—we have other great concerts coming up too, visit our website to check them out! \n(Please note this is an automated message from an unmonitored account, kindly do not reply to this email) \nThanks & have a great day, \nAna LaForest's Virtual Concert Series");
+                } //Checks if more than 0 tickets available
+                else if (standardMax > 0 && vipMax > 0) {
                     standardMax = standardMax - customerOrder.peek().getStandardTicket();
-                    //Possibly make this message more formal
-                    customers[i].setResponse("Hi, \n\n You're request for tickets was fulfilled and you must now go back to the website to complete payment");
-                }
-                if (vipMax - customerOrder.peek().getVIPTicket() < 0) {
-                    customers[i].setResponse("Sorry, but there is not enough tickets to fulfill you're request.");
-                } else if (vipMax > 0) {
                     vipMax = vipMax - customerOrder.peek().getVIPTicket();
-                    customers[i].setResponse("You're request for tickets was fulfilled and you must now go back to the website to complete payment");
+                    customers[i].setResponse("Thank you for your interest in our intimate virtual concert series! \nCongratulations, your request for " + customers[i].getStandardTicket() + " standard ticket(s) and " + customers[i].getVIPTicket() + " VIP ticket(s) has been successful! \nTo complete your purchase, please return to our website, login with your email and password, and you will be directed to our secure payment page to process the payment. \n(Please note this is an automated message from an unmonitored account, kindly do not reply to this email) \nThanks & have a great day, \nAna LaForest's Virtual Concert Series");
                 }
                 System.out.println(standardMax + " " + vipMax);
                 customerOrder.dequeue();
             }
         }
 
+        //Creates a file if needed to print the output text for the customers
         try {
             File newFile = new File("Ticket Response Emails.txt");
             if (newFile.createNewFile())
                 System.out.println("File created: " + newFile.getName());
-            else
+            else {
                 System.out.println("File already exists");
+                FileWriter emptyFile = new FileWriter("Ticket Response Emails.txt");
+                //Emptying the content in the file
+                emptyFile.close();
+            }
+        } catch (IOException e) {
+            System.out.println("An Error has occurred");
+        }
 
+        //Attempts to write to the file with all the customer's email and email text
+        try {
             FileWriter writer = new FileWriter("Ticket Response Emails.txt");
             for (int i = 0; i < length; i++) {
-                writer.write("<<EMAIL>>");
+                writer.write("<<EMAIL>>\n");
                 writer.write(customers[i].getEmail());
-                writer.write("<<END EMAIL>>");
+                writer.write("\n" + customers[i].getResponse());
+                writer.write("\n<<END EMAIL>>\n");
             }
-
             writer.close();
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
@@ -101,6 +110,12 @@ public class Main {
         }
     }
 
+    /**
+     * Randomizes the order of customers for the lottery
+     * @param customers The array with all of the customers information
+     * @param length The number of customers there are in the array
+     * @param customerOrder The queue with the new order of customers
+     */
     public static void randomizeArray(Customer[] customers, int length, OrderQueue customerOrder) {
         Random rnd = ThreadLocalRandom.current();
         for (int i = 0; i < length; i++) {
@@ -110,6 +125,5 @@ public class Main {
             customers[i] = temp;
             customerOrder.enqueue(customers[i]);
         }
-        //easy fix: just remove the previous print and add a for each loop here for printing the entire array
     }
 }

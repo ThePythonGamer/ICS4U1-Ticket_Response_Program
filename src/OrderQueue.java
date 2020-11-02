@@ -4,11 +4,7 @@ import java.util.ArrayList;
  *
  * @version 1
  */
-
-
 public class OrderQueue {
-    /**This is a queue for storing every customer's information in a certain order.
-     */
     private ArrayList<Customer> Queue = new ArrayList<>();
 
     /**
