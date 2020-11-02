@@ -6,12 +6,14 @@ public class Customer {
     private String email;
     private int standardTicket;
     private int VIPTicket;
+    private String response;
 
 
-    public Customer(String email, int standardTicket, int VIPTicket) {
+    public Customer(String email, int standardTicket, int VIPTicket, String response) {
         this.email = email;
         this.standardTicket = standardTicket;
         this.VIPTicket = VIPTicket;
+        this.response = response;
     }
 
     public String getEmail() {
@@ -24,6 +26,14 @@ public class Customer {
 
     public int getVIPTicket() {
         return VIPTicket;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
     }
 
     @Override
