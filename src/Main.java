@@ -86,17 +86,14 @@ public class Main {
                 System.out.println("File created: " + newFile.getName());
             else
                 System.out.println("File already exists");
-        } catch (IOException e) {
-            System.out.println("An Error has occurred");
-        }
 
-        try {
             FileWriter writer = new FileWriter("Ticket Response Emails.txt");
             for (int i = 0; i < length; i++) {
                 writer.write("<<EMAIL>>");
                 writer.write(customers[i].getEmail());
                 writer.write("<<END EMAIL>>");
             }
+
             writer.close();
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
