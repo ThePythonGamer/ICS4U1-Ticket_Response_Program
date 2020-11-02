@@ -30,9 +30,12 @@ public class Main {
                 name = sc.nextLine();
                 standard = sc.nextInt();
                 vip = sc.nextInt();
-                sc.nextLine();
+                if(i != length-1) {
+                    sc.nextLine();
+                }//change this so the file could have the last number without a new line symbol
                 customers[i] = new Customer(name,standard,vip);
             }
+            sc.close();
         }//Gives error message to user and ends the program if the file was not found on the computer
         catch (FileNotFoundException e) {
             System.out.println("The file was not found, please make sure it is outside the source folder. The program will now shutdown.");
