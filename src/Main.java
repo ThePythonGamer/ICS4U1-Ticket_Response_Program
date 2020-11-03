@@ -37,7 +37,11 @@ public class Main {
                 standard = sc.nextInt();
                 vip = sc.nextInt();
                 if (i != length - 1) {
-                    sc.nextLine(); //change this so the file could have the last number without a new line symbol - IDK what you mean
+                    sc.nextLine();
+                }
+                if (standard < 0 || vip < 0) {
+                    System.out.println("Please make sure all numerical values are positive. The program will now shutdown.");
+                    System.exit(0);
                 }
 
                 //Assigns all the values to a customer in the array
@@ -61,11 +65,6 @@ public class Main {
         //The lottery which randomizes the order of customers
         randomizeArray(customers, length, customerOrder);
 
-        //REMOVE after Testing
-        for (Customer customer : customers) {
-            System.out.println(customer);
-        }
-
         //Declaring & Initializing how many tickets are available of each type
         int standardMax = 30;
         int vipMax = 10;
@@ -83,7 +82,6 @@ public class Main {
                     vipMax = vipMax - customerOrder.peek().getVIPTicket();
                     customers[i].setResponse("Thank you for your interest in our intimate virtual concert series! \nCongratulations, your request for " + customers[i].getStandardTicket() + " standard ticket(s) and " + customers[i].getVIPTicket() + " VIP ticket(s) has been successful! \nTo complete your purchase, please return to our website, login with your email and password, and you will be directed to our secure payment page to process the payment. \n(Please note this is an automated message from an unmonitored account, kindly do not reply to this email) \nThanks & have a great day, \nAna LaForest's Virtual Concert Series");
                 }
-                System.out.println(standardMax + " " + vipMax); //REMOVE after testing
                 customerOrder.dequeue();
             }
         }
@@ -93,11 +91,7 @@ public class Main {
             File newFile = new File("Ticket Response Emails.txt");
 
             //Creates a file if it doesn't exist
-            if (newFile.createNewFile())
-                System.out.println("File created: " + newFile.getName()); //REMOVE Print statement after testing
-            //If file already exists, It clears the content of that file
-            else {
-                System.out.println("File already exists"); //Remove Print statement after testing
+            if (!(newFile.createNewFile())) {
                 FileWriter emptyFile = new FileWriter("Ticket Response Emails.txt");
                 //Emptying the content in the file
                 emptyFile.close();
@@ -117,7 +111,6 @@ public class Main {
                 writer.write("<<END EMAIL>>\n");
             }
             writer.close();
-            System.out.println("Successfully wrote to the file."); //REMOVE Print statement after testing
         } catch (IOException e) {
             System.out.println("An Error has occurred");
         }

@@ -1,6 +1,6 @@
 /** The class that creates the Customer Object that holds multiple attributes of customer information
  *
- * @author Hayden Rooney, Daniel Ly, Erin Zhang
+ * @author Hayden Rooney, Erin Zhang
  * @version 4
  */
 public class Customer {
@@ -9,7 +9,7 @@ public class Customer {
     private int VIPTicket;
     private String response;
 
-    /**This is a Customer object that represent a customer with email and his/her request on standard ticket, vip ticket.
+    /** This is a Customer object that represent a customer with email and his/her request on standard ticket, vip ticket.
      * A response is included for emailing this customer later.
      *
      * @param email this represent the customer's email
@@ -24,7 +24,7 @@ public class Customer {
         this.response = response;
     }
 
-    /**This get email of the Customer object
+    /** This get email of the Customer object
      *
      * @return email of the customer
      */
@@ -32,14 +32,15 @@ public class Customer {
         return email;
     }
 
-    /**This returns the amount of standard ticket being requested by the customer
+    /** This returns the amount of standard ticket being requested by the customer
      *
      * @return amount of standard ticket being requested
      */
     public int getStandardTicket() {
         return standardTicket;
     }
-    /**This returns the amount of VIP ticket being requested by the customer
+
+    /** This returns the amount of VIP ticket being requested by the customer
      *
      * @return amount of VIP ticket being requested
      */
@@ -55,7 +56,7 @@ public class Customer {
         return response;
     }
 
-    /**This set the response for the customer's request
+    /** This set the response for the customer's request
      *
      * @param response information for email response to be changed
      */
@@ -63,7 +64,7 @@ public class Customer {
         this.response = response;
     }
 
-    /**Override toString
+    /** Override toString
      *
      * @return Customer's information in one sentence
      */

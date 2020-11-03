@@ -2,21 +2,21 @@ import java.util.ArrayList;
 
 /** The class that creates a queue to add the new customer order after doing a lottery
  *
- * @author Hayden Rooney, Daniel Ly, Erin Zhang
+ * @author Hayden Rooney, Erin Zhang
  * @version 1
  */
 public class OrderQueue {
     private ArrayList<Customer> Queue = new ArrayList<>();
 
-    /**
-     * This add a Customer object to the queue
+    /** This add a Customer object to the queue
+     *
      * @param toAdd Customer object to be added
      */
     public void enqueue(Customer toAdd) {
         Queue.add(toAdd);
     }
 
-    /**This removes the first object in the queue and return the removed element
+    /** This removes the first object in the queue and return the removed element
      *
      * @return the first Customer object in the queue, if there is no element to return, return null
      */
@@ -28,15 +28,15 @@ public class OrderQueue {
         }
     }
 
-    /**
-     * This return the size of the queue
+    /** This return the size of the queue
+     *
      * @return the size of the queue
      */
     public int size() {
         return Queue.size();
     }
 
-    /**Get the first element of the queue
+    /** Get the first element of the queue
      *
      * @return the first Customer object, if there is no element to return, return null
      */
